@@ -5,8 +5,6 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -18,7 +16,7 @@ public class ExampleSubsystem extends SubsystemBase{
       public final WPI_VictorSPX Rearleft = new WPI_VictorSPX(chassisID.RL);
         public final WPI_VictorSPX Rearright = new WPI_VictorSPX(chassisID.RR);
 
-  public DifferentialDrive tank = new DifferentialDrive(Frontleft, Frontright)};
+  public DifferentialDrive tank = new DifferentialDrive(Frontleft, Frontright);
 
   /** Creates a new ExampleSubsystem. */
   public ExampleSubsystem() {
@@ -28,16 +26,23 @@ public class ExampleSubsystem extends SubsystemBase{
           Rearleft.configFactoryDefault();
 
   Frontleft.setInverted(false);
-  Frontright.setInverted(false);
+  Frontright.setInverted(true);
     Rearleft.setInverted(false);
-    Rearright.setInverted(false);
+    Rearright.setInverted(true);
 
   Rearleft.follow(Frontleft);
-    Rearright.follow(Frontright);
+    Rearright.follow(Frontright);}
     
      public void drive(double X, double Y){
 tank.arcadeDrive(X, Y);
   }
+
+    public void TagAim(){
+
+    }
+    public void StopChassis(){
+
+    }
 
   /**
    * Example command factory method.
@@ -73,4 +78,5 @@ tank.arcadeDrive(X, Y);
   public void simulationPeriodic() {
     // This method will be called once per scheduler run during simulation
   }
+  
 }
